@@ -62,6 +62,20 @@ BaseWindow::BaseWindow(QWidget *parent)
 BaseWindow::~BaseWindow()
 {
     delete ui;
+    QWidget * central = takeCentralWidget();
+    if (mainScene != central)
+    {
+        delete mainScene;
+    }
+    if (levelSelectionScene != central)
+    {
+        delete levelSelectionScene;
+    }
+    if (playScene != central)
+    {
+        delete playScene;
+    }
+    delete central;
 }
 
 void BaseWindow::initWindow()
